@@ -1,0 +1,36 @@
+---
+version: 2
+
+tasks:
+  default:
+    cmds:
+      - task --list
+
+  build-single:
+    cmds:
+      - docker build
+        -f {{ .PHP_VERSION }}/{{ .OS_VERSION }}/{{ .IMAGE_VARIANT }}/Dockerfile
+        -t antonmarin/php':'{{ .PHP_VERSION }}-{{ .OS_VERSION }}-{{ .IMAGE_VARIANT }}
+        .
+
+  test-single:
+    cmds:
+      - task: build-single
+        vars:
+          PHP_VERSION:
+            sh: echo {{ .PHP_VERSION }}
+          OS_VERSION:
+            sh: echo {{ .OS_VERSION }}
+          IMAGE_VARIANT:
+            sh: echo {{ .IMAGE_VARIANT }}
+      - docker run -v ${PWD}/tests:/tmp/tests
+        antonmarin/php:{{ .PHP_VERSION }}-{{ .OS_VERSION }}-{{ .IMAGE_VARIANT }}
+        /tmp/tests/composer.sh
+
+  test:
+    cmds:
+      - task: test-single
+        vars:
+          PHP_VERSION: 5.6
+          OS_VERSION: alpine
+          IMAGE_VARIANT: cli
