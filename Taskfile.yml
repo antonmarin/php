@@ -10,7 +10,7 @@ tasks:
     cmds:
       - docker build
         -f {{ .PHP_VERSION }}/{{ .OS_VERSION }}/{{ .IMAGE_VARIANT }}/Dockerfile
-        -t antonmarin/php':'{{ .PHP_VERSION }}-{{ .OS_VERSION }}-{{ .IMAGE_VARIANT }}
+        -t antonmarin/php:{{ .PHP_VERSION }}-{{ .OS_VERSION }}-{{ .IMAGE_VARIANT }}
         .
 
   test-single:
