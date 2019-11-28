@@ -23,9 +23,7 @@ tasks:
             sh: echo {{ .OS_VERSION }}
           IMAGE_VARIANT:
             sh: echo {{ .IMAGE_VARIANT }}
-      - docker run -v ${PWD}/tests:/tmp/tests
-        antonmarin/php:{{ .PHP_VERSION }}-{{ .OS_VERSION }}-{{ .IMAGE_VARIANT }}
-        /tmp/tests/composer.sh
+      - docker-compose -f {{ .PHP_VERSION }}/{{ .OS_VERSION }}/{{ .IMAGE_VARIANT }}/docker-compose.test.yml run sut
 
   test:
     cmds:
