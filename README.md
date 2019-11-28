@@ -11,3 +11,16 @@ moment of build.
 
 ## Usage
 
+### PHP
+
+Use environment variable to alter php.ini settings:
+
+- variables whould be here
+
+### Composer
+
+Composer is build-in. Just use it as usual `composer ...` inside container
+
+### Xdebug
+
+Xdebug is installed, but disabled.
