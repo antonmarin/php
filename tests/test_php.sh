@@ -33,10 +33,20 @@ echo -n 'PHP PHP_INI_MEMORY_LIMIT should set memory_limit'
 PHP_INI_MEMORY_LIMIT=256M php -i | grep -q "memory_limit => 256M"
 echo ' -> OK'
 
-echo -n 'PHP default PHP_INI_ERROR_REPORTING should be E_ALL & ~E_DEPRECATED & ~E_STRICT'
+echo -n 'PHP default error_reporting should be E_ALL & ~E_DEPRECATED & ~E_STRICT'
 php -i | grep -q "error_reporting => 22527"
 echo ' -> OK'
 
 echo -n 'PHP PHP_INI_ERROR_REPORTING should set error_reporting'
 PHP_INI_ERROR_REPORTING=32767 php -i | grep -q "error_reporting => 32767"
+echo ' -> OK'
+
+echo -n 'PHP default display_errors and display_startup_errors should be Off'
+php -i | grep -q "display_errors => Off"
+php -i | grep -q "display_startup_errors => Off"
+echo ' -> OK'
+
+echo -n 'PHP PHP_INI_DISPLAY_ERRORS should set display_errors and display_startup_errors'
+PHP_INI_DISPLAY_ERRORS=1 php -i | grep -q "display_errors => STDOUT"
+PHP_INI_DISPLAY_ERRORS=1 php -i | grep -q "display_startup_errors => On"
 echo ' -> OK'
