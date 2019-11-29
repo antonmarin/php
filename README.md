@@ -23,4 +23,12 @@ Composer is build-in. Just use it as usual `composer ...` inside container
 
 ### Xdebug
 
-Xdebug is installed, but disabled.
+Xdebug is installed, but disabled. 
+To enable xdebug in cli just `php -dzend_extension=xdebug.so` or setup your IDE interpreter.
+
+[PHPStorm](https://www.jetbrains.com/help/phpstorm/2019.3/php-interpreters.html) 
+section "Debugger extension" for example.
+
+Variables to setup Xdebug:
+
+- PHP_INI_XDEBUG_REMOTE_HOST
