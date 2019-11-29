@@ -19,7 +19,7 @@ Use environment variable to alter php.ini settings:
 
 ### Composer
 
-Composer is build-in. Just use it as usual `composer ...` inside container
+Composer is built-in. Just use it as usual `composer ...` inside container
 
 ### Xdebug
 
