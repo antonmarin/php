@@ -17,10 +17,6 @@ echo -n 'PHP Short open tag should be disabled'
 php -i | grep -q "short_open_tag => Off"
 echo ' -> OK'
 
-echo -n 'PHP ASP tag should be disabled'
-php -i | grep -q "asp_tags => Off"
-echo ' -> OK'
-
 echo -n 'PHP zend.enable_gc should be enabled'
 php -i | grep -q "zend.enable_gc => On"
 echo ' -> OK'
