@@ -17,6 +17,7 @@ Use environment variable to alter php.ini settings:
 
 - TZ=date.timezone
 - PHP_INI_MEMORY_LIMIT
+- PHP_INI_ERROR_REPORTING
 
 ### Composer
 

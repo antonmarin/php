@@ -3,7 +3,8 @@ FROM php:5.6-cli-alpine
 ENV HOME=/root
 
 ENV TZ=Etc/UTC \
-    PHP_INI_MEMORY_LIMIT=128M
+    PHP_INI_MEMORY_LIMIT=128M \
+    PHP_INI_ERROR_REPORTING=22527
 RUN rm -f ${PHP_INI_DIR}/php.ini*
 COPY php.ini ${PHP_INI_DIR}/
 
