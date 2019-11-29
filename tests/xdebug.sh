@@ -14,8 +14,9 @@ php -dzend_extension=xdebug.so -i | grep -q "xdebug.remote_host => localhost"
 echo ' -> OK'
 
 echo -n 'Xdebug remote host should equal to ${PHP_INI_XDEBUG_REMOTE_HOST} if set'
-export EXPECTED_XDEBUG_REMOTE_HOST=localhost
-php -dzend_extension=xdebug.so -i | grep -q "xdebug.remote_host => ${EXPECTED_XDEBUG_REMOTE_HOST}"
+export EXPECTED_XDEBUG_REMOTE_HOST=127.0.0.1
+PHP_INI_XDEBUG_REMOTE_HOST=${EXPECTED_XDEBUG_REMOTE_HOST} php -dzend_extension=xdebug.so \
+  -i | grep -q "xdebug.remote_host => ${EXPECTED_XDEBUG_REMOTE_HOST}"
 echo ' -> OK'
 
 echo -n 'Xdebug idekey should be PHPSTORM'
