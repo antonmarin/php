@@ -50,3 +50,7 @@ echo -n 'PHP PHP_INI_DISPLAY_ERRORS should set display_errors and display_startu
 PHP_INI_DISPLAY_ERRORS=1 php -i | grep -q "display_errors => STDOUT"
 PHP_INI_DISPLAY_ERRORS=1 php -i | grep -q "display_startup_errors => On"
 echo ' -> OK'
+
+echo -n 'PHP log_errors should be On'
+php -i | grep -q "log_errors => On"
+echo ' -> OK'
