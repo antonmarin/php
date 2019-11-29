@@ -6,3 +6,7 @@ for FILE in /tmp/tests/test_*.sh; do
     exit 1
   fi
 done
+
+# shellcheck disable=SC1091
+. /etc/os-release
+echo -e "\\e[32mTests with version ${PHP_VERSION}-${ID} successfull\\e[0m"
