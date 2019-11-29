@@ -6,23 +6,9 @@ tasks:
     cmds:
       - task --list
 
-  build-single:
-    cmds:
-      - docker build
-        -f {{ .PHP_VERSION }}/{{ .OS_VERSION }}/{{ .IMAGE_VARIANT }}/Dockerfile
-        -t antonmarin/php:{{ .PHP_VERSION }}-{{ .OS_VERSION }}-{{ .IMAGE_VARIANT }}
-        .
-
   test-single:
     cmds:
-      - task: build-single
-        vars:
-          PHP_VERSION:
-            sh: echo {{ .PHP_VERSION }}
-          OS_VERSION:
-            sh: echo {{ .OS_VERSION }}
-          IMAGE_VARIANT:
-            sh: echo {{ .IMAGE_VARIANT }}
+      - docker-compose -f {{ .DOCKERFILE_DIR }}/docker-compose.test.yml build
       - docker-compose -f {{ .DOCKERFILE_DIR }}/docker-compose.test.yml run sut
     vars:
       DOCKERFILE_DIR: "{{ .PHP_VERSION }}/{{ .OS_VERSION }}/{{ .IMAGE_VARIANT }}"
