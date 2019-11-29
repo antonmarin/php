@@ -8,4 +8,4 @@ services:
     volumes:
       - ../../../tests:/tmp/tests
     command: |
-      sh -c "for FILE in /tmp/tests/*.sh; do exec $${FILE}; done"
+      sh -c "for FILE in /tmp/tests/*.sh; do sh $${FILE}; done"
