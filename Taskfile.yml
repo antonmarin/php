@@ -6,6 +6,12 @@ tasks:
     cmds:
       - task --list
 
+  lint:
+    cmds:
+      - docker run -tv "$PWD:/mnt" koalaman/shellcheck:v0.5.0
+        --color=always --shell=bash --exclude=SC2016
+        **/*.sh
+
   test-single:
     cmds:
       - docker-compose -f {{ .DOCKERFILE_DIR }}/docker-compose.test.yml build
@@ -15,6 +21,7 @@ tasks:
 
   test:
     cmds:
+      - task: lint
       - task: test-single
         vars:
           PHP_VERSION: 5.6

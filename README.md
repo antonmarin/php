@@ -15,7 +15,8 @@ moment of build.
 
 Use environment variable to alter php.ini settings:
 
-- variables whould be here
+- TZ=date.timezone
+- PHP_INI_MEMORY_LIMIT
 
 ### Composer
 

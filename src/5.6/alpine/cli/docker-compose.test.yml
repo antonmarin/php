@@ -7,5 +7,4 @@ services:
       dockerfile: 5.6/alpine/cli/Dockerfile
     volumes:
       - ../../../../tests:/tmp/tests
-    command: |
-      sh -c "for FILE in /tmp/tests/*.sh; do sh $${FILE} || echo ' -> Fail'; done"
+    command: /tmp/tests/test.sh

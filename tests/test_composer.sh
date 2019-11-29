@@ -2,7 +2,7 @@
 set -eu
 
 echo -n 'Composer should be allowed as superuser'
-echo ${COMPOSER_ALLOW_SUPERUSER} | grep -q 1
+echo "${COMPOSER_ALLOW_SUPERUSER}" | grep -q 1
 echo ' -> OK'
 
 echo -n 'Composer should be available and at /usr/local/bin/composer'
