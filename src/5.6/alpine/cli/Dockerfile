@@ -26,3 +26,6 @@ RUN apk add --no-cache --virtual .build-deps \
     && \
     apk del --no-network .build-deps && \
     rm -rf /tmp/pear ~/.pearrc
+
+ENV PHP_INI_XDEBUG_REMOTE_HOST=localhost
+COPY xdebug.ini ${PHP_INI_DIR}/conf.d/

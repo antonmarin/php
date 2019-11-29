@@ -11,7 +11,7 @@ tasks:
       - docker-compose -f {{ .DOCKERFILE_DIR }}/docker-compose.test.yml build
       - docker-compose -f {{ .DOCKERFILE_DIR }}/docker-compose.test.yml run sut
     vars:
-      DOCKERFILE_DIR: "{{ .PHP_VERSION }}/{{ .OS_VERSION }}/{{ .IMAGE_VARIANT }}"
+      DOCKERFILE_DIR: "src/{{ .PHP_VERSION }}/{{ .OS_VERSION }}/{{ .IMAGE_VARIANT }}"
 
   test:
     cmds:
