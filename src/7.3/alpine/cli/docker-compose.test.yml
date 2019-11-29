@@ -1,0 +1,10 @@
+---
+version: "3.5"
+services:
+  sut:
+    build:
+      context: ../../..
+      dockerfile: 7.3/alpine/cli/Dockerfile
+    volumes:
+      - ../../../../tests:/tmp/tests
+    command: /tmp/tests/test.sh

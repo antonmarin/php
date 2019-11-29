@@ -24,6 +24,11 @@ tasks:
       - task: lint
       - task: test-single
         vars:
+          PHP_VERSION: 7.3
+          OS_VERSION: alpine
+          IMAGE_VARIANT: cli
+      - task: test-single
+        vars:
           PHP_VERSION: 7.2
           OS_VERSION: alpine
           IMAGE_VARIANT: cli
