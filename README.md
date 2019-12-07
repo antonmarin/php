@@ -1,5 +1,7 @@
 # PHP image 
 
+[![dockeri.co](https://dockeri.co/image/antonmarin/php)](https://hub.docker.com/r/antonmarin/php/)
+
 Basic php image with composer installed and xdebug installed but disabled.
 
 ## Goal and content motivation
