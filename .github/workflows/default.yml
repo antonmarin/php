@@ -1,0 +1,13 @@
+name: default
+on: [push]
+jobs:
+  lint-dockerfiles:
+    name: Validate dockerfile best practices
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Install Task
+        run: curl -sL https://taskfile.dev/install.sh | sh
+      - name: Hadolint
+        run: bin/task lint-dockerfile
