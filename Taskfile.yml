@@ -11,6 +11,10 @@ tasks:
       - docker run -tv "$PWD:/mnt" koalaman/shellcheck:v0.5.0
         --color=always --shell=bash --exclude=SC2016
         **/*.sh
+  lint-dockerfile:
+    cmds:
+      - docker run --rm -v $PWD:/app -w /app hadolint/hadolint:latest-debian
+        sh -c "find . -name Dockerfile | xargs -L1 hadolint"
 
   test-single:
     cmds:
