@@ -1,0 +1,21 @@
+---
+version: "3.5"
+services:
+  sut:
+    build:
+      context: ../../..
+      dockerfile: 7.4/alpine/fpm/Dockerfile
+    image: fpm_sut
+    volumes:
+      - ../../../../tests:/tmp/tests
+    command: /tmp/tests/suite_fpm.sh
+    links:
+      - fpm
+    depends_on:
+      - fpm
+  fpm:
+    build:
+      context: ../../..
+      dockerfile: 7.4/alpine/fpm/Dockerfile
+    volumes:
+      - ../../../../tests:/tmp/tests

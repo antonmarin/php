@@ -33,6 +33,11 @@ tasks:
           IMAGE_VARIANT: cli
       - task: test-single
         vars:
+          PHP_VERSION: 7.4
+          OS_VERSION: alpine
+          IMAGE_VARIANT: fpm
+      - task: test-single
+        vars:
           PHP_VERSION: 7.3
           OS_VERSION: alpine
           IMAGE_VARIANT: cli

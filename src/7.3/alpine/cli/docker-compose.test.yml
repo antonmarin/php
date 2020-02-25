@@ -7,4 +7,4 @@ services:
       dockerfile: 7.3/alpine/cli/Dockerfile
     volumes:
       - ../../../../tests:/tmp/tests
-    command: /tmp/tests/test.sh
+    command: /tmp/tests/suite_cli.sh
