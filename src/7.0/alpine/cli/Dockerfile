@@ -31,7 +31,7 @@ ENV PHPIZE_DEPS \
 RUN apk add --no-cache --virtual .build-deps \
     $PHPIZE_DEPS \
     && \
-    pecl install xdebug \
+    pecl install xdebug-2.8.1 \
     && \
     apk del --no-network .build-deps && \
     rm -rf /tmp/pear ~/.pearrc
