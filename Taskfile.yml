@@ -19,7 +19,7 @@ tasks:
   test-single:
     cmds:
       - docker-compose -f {{ .DOCKERFILE_DIR }}/docker-compose.test.yml build
-      - docker-compose -f {{ .DOCKERFILE_DIR }}/docker-compose.test.yml run sut
+      - docker-compose -f {{ .DOCKERFILE_DIR }}/docker-compose.test.yml run --rm sut
     vars:
       DOCKERFILE_DIR: "src/{{ .PHP_VERSION }}/{{ .OS_VERSION }}/{{ .IMAGE_VARIANT }}"
 

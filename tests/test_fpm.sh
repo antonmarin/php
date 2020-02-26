@@ -22,3 +22,25 @@ else
   exit 1
 fi
 
+apk --update add fcgi
+
+echo -n 'fcgi should be available'
+REQUEST_METHOD=GET \
+cgi-fcgi -bind -connect fpm:9000 | grep -q 'X-Powered-By: PHP'
+echo ' -> OK'
+
+echo -n 'xdebug should not be loaded by default'
+SCRIPT_FILENAME=/tmp/tests/test.php \
+DOCUMENT_ROOT=/tmp/tests/ \
+PATH_INFO=/tmp/tests/test.php \
+REQUEST_METHOD=GET \
+cgi-fcgi -bind -connect fpm:9000 | grep -q '"xdebug loaded":false'
+echo ' -> OK'
+
+echo -n 'xdebug should be loaded by command'
+SCRIPT_FILENAME=/tmp/tests/test.php \
+DOCUMENT_ROOT=/tmp/tests/ \
+PATH_INFO=/tmp/tests/test.php \
+REQUEST_METHOD=GET \
+cgi-fcgi -bind -connect fpm-xdebug-by-command:9000 | grep -q '"xdebug loaded":true'
+echo ' -> OK'

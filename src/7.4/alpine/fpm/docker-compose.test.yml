@@ -9,13 +9,22 @@ services:
     volumes:
       - ../../../../tests:/tmp/tests
     command: /tmp/tests/suite_fpm.sh
-    links:
-      - fpm
     depends_on:
       - fpm
+      - fpm-xdebug-by-command
   fpm:
     build:
       context: ../../..
       dockerfile: 7.4/alpine/fpm/Dockerfile
     volumes:
       - ../../../../tests:/tmp/tests
+  fpm-xdebug-by-command:
+    build:
+      context: ../../..
+      dockerfile: 7.4/alpine/fpm/Dockerfile
+    volumes:
+      - ../../../../tests:/tmp/tests
+    command:
+      - php-fpm
+      - -d
+      - zend_extension=xdebug.so

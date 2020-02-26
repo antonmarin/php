@@ -1,2 +1,2 @@
 <?php
-echo '1';
+echo json_encode(['xdebug loaded' => extension_loaded('xdebug')]);
