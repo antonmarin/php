@@ -1,0 +1,30 @@
+---
+version: "3.5"
+services:
+  sut:
+    build:
+      context: ../../..
+      dockerfile: 7.2/alpine/fpm/Dockerfile
+    image: fpm_sut
+    volumes:
+      - ../../../../tests:/tmp/tests
+    command: /tmp/tests/suite_fpm.sh
+    depends_on:
+      - fpm
+      - fpm-xdebug-by-command
+  fpm:
+    build:
+      context: ../../..
+      dockerfile: 7.2/alpine/fpm/Dockerfile
+    volumes:
+      - ../../../../tests:/tmp/tests
+  fpm-xdebug-by-command:
+    build:
+      context: ../../..
+      dockerfile: 7.2/alpine/fpm/Dockerfile
+    volumes:
+      - ../../../../tests:/tmp/tests
+    command:
+      - php-fpm
+      - -d
+      - zend_extension=xdebug.so
