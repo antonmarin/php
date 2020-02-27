@@ -26,3 +26,15 @@ echo ' -> OK'
 echo -n 'Xdebug autostart should be disabled'
 php -dzend_extension=xdebug.so -i | grep -q "xdebug.remote_autostart => Off"
 echo ' -> OK'
+
+echo -n 'Xdebug profiler trigger should be enabled'
+php -dzend_extension=xdebug.so -i | grep -q "xdebug.profiler_enable_trigger => On"
+echo ' -> OK'
+
+echo -n 'Xdebug tracing trigger should be enabled'
+php -dzend_extension=xdebug.so -i | grep -q "xdebug.trace_enable_trigger => On"
+echo ' -> OK'
+
+echo -n 'Xdebug tracing function parameters should be by value'
+php -dzend_extension=xdebug.so -i | grep -q "xdebug.collect_params => 3"
+echo ' -> OK'

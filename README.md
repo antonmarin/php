@@ -30,7 +30,8 @@ Composer is built-in. Just use it as usual `composer ...` inside container
 Xdebug is installed, but disabled. 
 To enable xdebug in cli just `php -dzend_extension=xdebug.so` or setup your IDE interpreter.
 To enable xdebug in fpm use `php-fpm -d zend_extension=xdebug.so` command to start container.
-
+To enable profiling add `-d xdebug.profiler_enable=On` and `-d xdebug.auto_trace=1` to enable tracing.
+Profiling and tracing files are stored at `/tmp`
 Variables to setup Xdebug:
 
 - [XDEBUG_CONFIG](https://xdebug.org/docs/remote)
