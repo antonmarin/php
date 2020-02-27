@@ -31,9 +31,38 @@ Xdebug is installed, but disabled.
 To enable xdebug in cli just `php -dzend_extension=xdebug.so` or setup your IDE interpreter.
 To enable xdebug in fpm use `php-fpm -d zend_extension=xdebug.so` command to start container.
 
-[PHPStorm](https://www.jetbrains.com/help/phpstorm/2019.3/php-interpreters.html) 
-section "Debugger extension" for example.
-
 Variables to setup Xdebug:
 
+- [XDEBUG_CONFIG](https://xdebug.org/docs/remote)
 - PHP_INI_XDEBUG_REMOTE_HOST
+
+### Examples
+
+#### Manual run php cli
+
+    docker run --rm \
+        -e PHP_INI_XDEBUG_REMOTE_HOST=host.docker.internal \
+        antonmarin/php:7.4-alpine-cli \
+        php -dzend_extension=xdebug.so -i
+
+#### Use composer
+
+    docker run --rm antonmarin/php:7.4-alpine-cli composer show --platform 
+
+#### docker-compose
+
+    services:
+      php:
+        image: antonmarin/php:7.4-alpine-fpm
+        environment:
+          XDEBUG_CONFIG: remote_host={{YOUR_IP_ADDRESS}}
+          PHP_IDE_CONFIG: serverName={{YOUR_APPLICATION_NAME}}
+        command:
+          - php-fpm
+          - -d
+          - zend_extension=xdebug.so
+
+#### PhpStorm interpreter
+
+[PHPStorm](https://www.jetbrains.com/help/phpstorm/2019.3/php-interpreters.html) 
+section "Debugger extension" for example.
