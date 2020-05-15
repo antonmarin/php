@@ -10,7 +10,7 @@ ENV TZ=Etc/UTC \
 RUN rm -f "${PHP_INI_DIR}"/php.ini*
 COPY php.ini "${PHP_INI_DIR}"/
 
-ENV COMPOSER_ALLOW_SUPERUSER 1
+ENV COMPOSER_ALLOW_SUPERUSER=1 COMPOSER_MEMORY_LIMIT=-1
 COPY --from=composer /usr/bin/composer /usr/local/bin/
 COPY --from=composer /tmp/keys.dev.pub /tmp/keys.tags.pub ${HOME}/.composer/
 

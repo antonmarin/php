@@ -24,6 +24,9 @@ Use environment variable to alter php.ini settings:
 ### Composer
 
 Composer is built-in. Just use it as usual `composer ...` inside container
+Variables to setup Composer:
+
+- COMPOSER_MEMORY_LIMIT
 
 ### Xdebug
 
