@@ -30,8 +30,8 @@ ENV PHPIZE_DEPS \
 # hadolint ignore=DL3018
 RUN apk add --no-cache --virtual .build-deps \
     $PHPIZE_DEPS \
-    && \
-    pecl install xdebug \
+    && pecl channel-update pecl.php.net \
+    && pecl install xdebug-2.9.8 \
     && \
     apk del --no-network .build-deps && \
     rm -rf /tmp/pear ~/.pearrc
