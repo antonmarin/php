@@ -34,7 +34,8 @@ RUN apk add --no-cache --virtual .build-deps \
     && pecl install xdebug-2.9.8 \
     && \
     apk del --no-network .build-deps && \
-    rm -rf /tmp/pear ~/.pearrc
+    rm -rf /tmp/pear ~/.pearrc \
+    && docker-php-ext-enable opcache
 
 ENV PHP_INI_XDEBUG_REMOTE_HOST=localhost
 COPY xdebug.ini ${PHP_INI_DIR}/conf.d/
