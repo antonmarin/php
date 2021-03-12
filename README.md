@@ -39,6 +39,7 @@ Variables to setup Xdebug:
 
 - [XDEBUG_CONFIG](https://xdebug.org/docs/remote)
 - PHP_INI_XDEBUG_REMOTE_HOST
+- For Jetbrains IDE: [PHP_IDE_CONFIG](https://blog.jetbrains.com/phpstorm/2012/03/new-in-4-0-easier-debugging-of-remote-php-command-line-scripts/)
 
 ### Examples
 
