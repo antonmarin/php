@@ -59,7 +59,7 @@ Variables to setup Xdebug:
       php:
         image: antonmarin/php:7.4-alpine-fpm
         environment:
-          XDEBUG_CONFIG: remote_host={{YOUR_IP_ADDRESS}}
+          PHP_INI_XDEBUG_REMOTE_HOST: {{YOUR_IP_ADDRESS}}
           PHP_IDE_CONFIG: serverName={{YOUR_APPLICATION_NAME}}
         command:
           - php-fpm
