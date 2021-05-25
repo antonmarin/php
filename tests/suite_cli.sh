@@ -3,14 +3,16 @@
 files="/tmp/tests/test_php.sh
 /tmp/tests/test_composer.sh
 /tmp/tests/test_xdebug.sh"
+# shellcheck disable=SC1091
+. /etc/os-release
+
 for FILE in $files
 do
   if ! sh "${FILE}"; then
     echo ' -> Failed'
+    echo -e "\\e[31mTests with version ${PHP_VERSION}-cli-${ID} failed\\e[0m"
     exit 1
   fi
 done
 
-# shellcheck disable=SC1091
-. /etc/os-release
-echo -e "\\e[32mTests with version ${PHP_VERSION}-cli-${ID} successfull\\e[0m"
+echo -e "\\e[32mTests with version ${PHP_VERSION}-cli-${ID} successful\\e[0m"

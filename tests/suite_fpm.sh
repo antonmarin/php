@@ -1,17 +1,19 @@
 #!/usr/bin/env sh
 
 files="/tmp/tests/test_php.sh
+/tmp/tests/test_fpm.sh
 /tmp/tests/test_composer.sh
-/tmp/tests/test_xdebug.sh
-/tmp/tests/test_fpm.sh"
+/tmp/tests/test_xdebug.sh"
+# shellcheck disable=SC1091
+. /etc/os-release
+
 for FILE in $files
 do
   if ! sh "${FILE}"; then
     echo ' -> Failed'
+    echo -e "\\e[31mTests with version ${PHP_VERSION}-cli-${ID} failed\\e[0m"
     exit 1
   fi
 done
 
-# shellcheck disable=SC1091
-. /etc/os-release
-echo -e "\\e[32mTests with version ${PHP_VERSION}-fpm-${ID} successfull\\e[0m"
+echo -e "\\e[32mTests with version ${PHP_VERSION}-fpm-${ID} successful\\e[0m"

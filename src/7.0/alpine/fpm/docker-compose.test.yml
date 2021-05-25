@@ -7,24 +7,34 @@ services:
       dockerfile: 7.0/alpine/fpm/Dockerfile
     image: fpm_sut
     volumes:
-      - ../../../../tests:/tmp/tests
+      - tests:/tmp/tests
     command: /tmp/tests/suite_fpm.sh
     depends_on:
       - fpm
-      - fpm-xdebug-by-command
+      - fpm-alternative
   fpm:
     build:
       context: ../../..
       dockerfile: 7.0/alpine/fpm/Dockerfile
     volumes:
-      - ../../../../tests:/tmp/tests
-  fpm-xdebug-by-command:
+      - tests:/var/www/html
+    env_file: ../../../../tests/.env_default
+  fpm-alternative:
     build:
       context: ../../..
       dockerfile: 7.0/alpine/fpm/Dockerfile
     volumes:
-      - ../../../../tests:/tmp/tests
+      - tests:/var/www/html
+    env_file: ../../../../tests/.env_alternative
     command:
       - php-fpm
       - -d
       - zend_extension=xdebug.so
+
+volumes:
+  tests:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./tests
+      o: bind

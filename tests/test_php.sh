@@ -47,6 +47,14 @@ PHP_INI_DISPLAY_ERRORS=1 php -i | grep -q "display_errors => STDOUT"
 PHP_INI_DISPLAY_ERRORS=1 php -i | grep -q "display_startup_errors => On"
 echo ' -> OK'
 
+echo -n 'PHP session.use_cookies should be enabled when PHP_INI_SESSION_USE_COOKIES not set'
+php -i | grep -q "session.use_cookies => 1" || php -i | grep -q "session.use_cookies => On"
+echo ' -> OK'
+
+echo -n 'PHP session.use_cookies should be disabled when PHP_INI_SESSION_USE_COOKIES=0'
+PHP_INI_SESSION_USE_COOKIES=0 php -i | grep -q "session.use_cookies => 0" || PHP_INI_SESSION_USE_COOKIES=0 php -i | grep -q "session.use_cookies => Off"
+echo ' -> OK'
+
 echo -n 'PHP log_errors should be On'
 php -i | grep -q "log_errors => On"
 echo ' -> OK'
