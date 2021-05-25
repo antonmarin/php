@@ -47,6 +47,7 @@ Variables to setup Xdebug:
 #### Manual run php cli
 
     docker run --rm \
+        -e PHP_INI_SESSION_USE_COOKIES=0 \
         -e PHP_INI_XDEBUG_REMOTE_HOST=host.docker.internal \
         antonmarin/php:7.4-alpine-cli \
         php -dzend_extension=xdebug.so -i
@@ -61,6 +62,7 @@ Variables to setup Xdebug:
       php:
         image: antonmarin/php:7.4-alpine-fpm
         environment:
+          PHP_INI_SESSION_USE_COOKIES: 0
           PHP_INI_XDEBUG_REMOTE_HOST: {{YOUR_IP_ADDRESS}}
           PHP_IDE_CONFIG: serverName={{YOUR_APPLICATION_NAME}}
         command:
