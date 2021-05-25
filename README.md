@@ -19,7 +19,8 @@ Use environment variable to alter php.ini settings:
 - TZ=date.timezone
 - PHP_INI_MEMORY_LIMIT
 - PHP_INI_ERROR_REPORTING int from [Integer value calculator](https://maximivanov.github.io/php-error-reporting-calculator/)
-- PHP_INI_DISPLAY_ERRORS
+- PHP_INI_DISPLAY_ERRORS 1/0
+- PHP_INI_SESSION_USE_COOKIES 1/0
 
 ### Composer
 

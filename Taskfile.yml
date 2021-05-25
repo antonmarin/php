@@ -17,15 +17,23 @@ tasks:
         sh -c "find . -name Dockerfile | xargs -L1 hadolint"
 
   test-single:
+    desc: "Run single variant test. Use PHP_VERSION=7.1 OS_VERSION=alpine IMAGE_VARIANT=cli task test-single"
     cmds:
+      - docker pull -q php:{{ .PHP_VERSION }}-{{ .IMAGE_VARIANT }}-{{ .OS_VERSION }}
       - docker-compose -f {{ .DOCKERFILE_DIR }}/docker-compose.test.yml build
       - docker-compose -f {{ .DOCKERFILE_DIR }}/docker-compose.test.yml run --rm sut
     vars:
       DOCKERFILE_DIR: "src/{{ .PHP_VERSION }}/{{ .OS_VERSION }}/{{ .IMAGE_VARIANT }}"
 
+  test-clean:
+    cmds:
+      - docker stop fpm_fpm-alternative_1 fpm_fpm_1
+      - docker rm fpm_fpm-alternative_1 fpm_fpm_1
+
   test:
     cmds:
       - task: lint
+      - task: test-clean
       - task: test-single
         vars:
           PHP_VERSION: 7.4
