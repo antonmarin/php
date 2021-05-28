@@ -1,5 +1,5 @@
 ---
-version: 2
+version: 2.6
 
 tasks:
   default:
@@ -8,7 +8,7 @@ tasks:
 
   lint:
     cmds:
-      - docker run -tv "$PWD:/mnt" koalaman/shellcheck:v0.5.0
+      - docker run --rm -tv "$PWD:/mnt" koalaman/shellcheck:v0.5.0
         --color=always --shell=bash --exclude=SC2016
         **/*.sh
   lint-dockerfile:
