@@ -26,6 +26,7 @@ tasks:
       DOCKERFILE_DIR: "src/{{ .PHP_VERSION }}/{{ .OS_VERSION }}/{{ .IMAGE_VARIANT }}"
 
   test-clean:
+    desc: "clean started containers after tests"
     cmds:
       - docker stop fpm_fpm-alternative_1 fpm_fpm_1
       - docker rm fpm_fpm-alternative_1 fpm_fpm_1

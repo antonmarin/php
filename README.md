@@ -42,6 +42,10 @@ Variables to setup Xdebug:
 - PHP_INI_XDEBUG_REMOTE_HOST
 - For Jetbrains IDE: [PHP_IDE_CONFIG](https://blog.jetbrains.com/phpstorm/2012/03/new-in-4-0-easier-debugging-of-remote-php-command-line-scripts/)
 
+Notice that php built in server doesn't populate $_ENV to $_SERVER, so it doesn't
+support [PHP_IDE_CONFIG](https://blog.jetbrains.com/phpstorm/2012/03/new-in-4-0-easier-debugging-of-remote-php-command-line-scripts/)
+env variable to set up server mapping
+
 ### Examples
 
 #### Manual run php cli
