@@ -1,4 +1,5 @@
 .DEFAULT_GOAL=help
+IMAGE_REPO=antonmarin/php
 
 lint: lint-shell lint-dockerfile #? quick pre-build validations
 lint-dockerfile:
@@ -26,6 +27,11 @@ test-single:
 	DOCKERFILE_DIR="src/$(PHP_VERSION)/$(OS_VERSION)/$(IMAGE_VARIANT)" && \
 		docker-compose -f $$DOCKERFILE_DIR/docker-compose.test.yml build && \
 		docker-compose -f $$DOCKERFILE_DIR/docker-compose.test.yml run --rm sut
+
+publish:
+	DOCKERFILE_DIR="src/$(PHP_VERSION)/$(OS_VERSION)/$(IMAGE_VARIANT)" && \
+		docker build -t "$(IMAGE_REPO):$(PHP_VERSION)-$(OS_VERSION)-$(IMAGE_VARIANT)" -f $$DOCKERFILE_DIR/Dockerfile src && \
+		docker push "$(IMAGE_REPO):$(PHP_VERSION)-$(OS_VERSION)-$(IMAGE_VARIANT)"
 
 
 help: #? help me
