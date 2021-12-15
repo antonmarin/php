@@ -6,8 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
-      - name: Install Task
-        run: curl -sL https://taskfile.dev/install.sh | sh
+        uses: actions/checkout@v2
       - name: Hadolint
-        run: bin/task lint-dockerfile
+        run: make lint-dockerfile
