@@ -30,8 +30,19 @@ jobs:
         uses: actions/checkout@v2
       - name: Test image
         run: make PHP_VERSION=${{ matrix.php }} IMAGE_VARIANT=${{ matrix.variant}} OS_VERSION=alpine test-single
-      - name: Publish image
-        if: ${{ github.ref == 'refs/heads/master' }}
+  publish:
+    name: Publish images
+    if: ${{ github.ref == 'refs/heads/master' }}
+    strategy:
+      matrix:
+        php: [ 7.4, 7.3, 7.2, 7.1, "7.0" ]
+        variant: [ cli, fpm ]
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Login and publish image
         run: |
           echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u antonmarin --password-stdin
           make PHP_VERSION=${{ matrix.php }} IMAGE_VARIANT=${{ matrix.variant}} OS_VERSION=alpine publish
