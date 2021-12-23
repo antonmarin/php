@@ -11,6 +11,8 @@ lint-shell:
         **/*.sh
 
 test: #? test all images
+	$(MAKE) PHP_VERSION=8.0 IMAGE_VARIANT=cli OS_VERSION=alpine test-single
+	$(MAKE) PHP_VERSION=8.0 IMAGE_VARIANT=fpm OS_VERSION=alpine test-single
 	$(MAKE) PHP_VERSION=7.4 IMAGE_VARIANT=cli OS_VERSION=alpine test-single
 	$(MAKE) PHP_VERSION=7.4 IMAGE_VARIANT=fpm OS_VERSION=alpine test-single
 	$(MAKE) PHP_VERSION=7.3 IMAGE_VARIANT=cli OS_VERSION=alpine test-single
