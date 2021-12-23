@@ -1,8 +1,10 @@
 #!/usr/bin/env sh
 
-files="/tmp/tests/test_php.sh
+files="/tmp/tests/test_vars.sh
+/tmp/tests/test_php.sh
 /tmp/tests/test_composer.sh
-/tmp/tests/test_xdebug.sh"
+/tmp/tests/test_xdebug${XDEBUG_VERSION}.sh"
+
 # shellcheck disable=SC1091
 . /etc/os-release
 
