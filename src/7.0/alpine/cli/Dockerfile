@@ -1,4 +1,4 @@
-FROM composer:1 as composer
+FROM composer:2 as composer
 FROM php:7.0-cli-alpine
 
 ENV HOME=/root
