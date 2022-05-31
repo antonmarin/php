@@ -21,11 +21,6 @@ test: #? test all images
 	$(MAKE) PHP_VERSION=7.3 IMAGE_VARIANT=fpm OS_VERSION=alpine test-single
 	$(MAKE) PHP_VERSION=7.2 IMAGE_VARIANT=cli OS_VERSION=alpine test-single
 	$(MAKE) PHP_VERSION=7.2 IMAGE_VARIANT=fpm OS_VERSION=alpine test-single
-	$(MAKE) PHP_VERSION=7.1 IMAGE_VARIANT=cli OS_VERSION=alpine test-single
-	$(MAKE) PHP_VERSION=7.1 IMAGE_VARIANT=fpm OS_VERSION=alpine test-single
-	$(MAKE) PHP_VERSION=7.0 IMAGE_VARIANT=cli OS_VERSION=alpine test-single
-	$(MAKE) PHP_VERSION=7.0 IMAGE_VARIANT=fpm OS_VERSION=alpine test-single
-	$(MAKE) PHP_VERSION=5.6 IMAGE_VARIANT=cli OS_VERSION=alpine test-single
 test-single:
 	docker pull -q php:$(PHP_VERSION)-$(IMAGE_VARIANT)-$(OS_VERSION)
 	DOCKERFILE_DIR="src/$(PHP_VERSION)/$(OS_VERSION)/$(IMAGE_VARIANT)" && \

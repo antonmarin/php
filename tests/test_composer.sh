@@ -17,6 +17,10 @@ echo -n 'Composer should be diagnosed as OK'
 composer diagnose >/dev/null
 echo ' -> OK'
 
+echo -n 'Composer use unzip to install packages (not found a way to test composer output)'
+command -v unzip | grep -q "/usr/bin/unzip"
+echo ' -> OK'
+
 echo -n 'Composer should be able to require package'
 composer require antonmarin/traceable-pdo 2>/dev/null
 echo ' -> OK'
