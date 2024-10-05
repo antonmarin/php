@@ -1,4 +1,4 @@
-# PHP image 
+# PHP image
 
 [![dockeri.co](https://dockeri.co/image/antonmarin/php)](https://hub.docker.com/r/antonmarin/php/)
 
@@ -30,7 +30,16 @@ Variables to set up Composer:
 
 - COMPOSER_MEMORY_LIMIT
 
-### Xdebug
+### Extensions
+
+#### PDO
+
+MySQL and PostgreSQL extensions installed and disabled.
+
+To enable in cli `php -dextension=pdo_mysql.so` or `php -dextension=pdo_pgsql.so`.
+To enable in fpm use `php-fpm -dextension=pdo_mysql.so` or `php-fpm -dextension=pdo_pgsql.so` to start container.
+
+#### Xdebug
 
 Xdebug is installed, but disabled. [Beginning from 7.3](https://xdebug.org/docs/compat) Xdebug3 is bundled.
 
@@ -44,11 +53,11 @@ Variables to setup Xdebug:
 - PHP_INI_XDEBUG_REMOTE_HOST. Sets xdebug.remote_host for Xdebug2 or xdebug.client_host for Xdebug3
 - For Jetbrains IDE: [PHP_IDE_CONFIG](https://blog.jetbrains.com/phpstorm/2012/03/new-in-4-0-easier-debugging-of-remote-php-command-line-scripts/)
 
-#### Xdebug 3
+##### Xdebug 3
 
 To enable profiling add `-d xdebug.mode=profile` or `-d xdebug.mode=trace` to enable tracing.
 
-#### Xdebug 2
+##### Xdebug 2
 
 To enable profiling add `-d xdebug.profiler_enable=On` and `-d xdebug.auto_trace=1` to enable tracing.
 
@@ -68,7 +77,7 @@ env variable to set up server mapping
 
 #### Use composer
 
-    docker run --rm antonmarin/php:7.4-alpine-cli composer show --platform 
+    docker run --rm antonmarin/php:7.4-alpine-cli composer show --platform
 
 #### docker-compose
 

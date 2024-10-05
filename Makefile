@@ -24,8 +24,8 @@ test: #? test all images
 test-single:
 	docker pull -q php:$(PHP_VERSION)-$(IMAGE_VARIANT)-$(OS_VERSION)
 	DOCKERFILE_DIR="src/$(PHP_VERSION)/$(OS_VERSION)/$(IMAGE_VARIANT)" && \
-		docker-compose -f $$DOCKERFILE_DIR/docker-compose.test.yml build && \
-		docker-compose -f $$DOCKERFILE_DIR/docker-compose.test.yml run --rm sut
+		docker compose -f $$DOCKERFILE_DIR/docker-compose.test.yml build && \
+		docker compose -f $$DOCKERFILE_DIR/docker-compose.test.yml run --rm sut
 
 publish:
 	DOCKERFILE_DIR="src/$(PHP_VERSION)/$(OS_VERSION)/$(IMAGE_VARIANT)" && \

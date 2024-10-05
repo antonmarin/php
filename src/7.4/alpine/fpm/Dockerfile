@@ -36,7 +36,11 @@ RUN apk add --no-cache --virtual .build-deps \
     && \
     apk del --no-network .build-deps && \
     rm -rf /tmp/pear ~/.pearrc \
-    && docker-php-ext-enable opcache
+    && docker-php-ext-enable opcache \
+    && apk add --no-cache postgresql-dev \
+	&& docker-php-ext-install pdo_mysql pdo_pgsql \
+	&& rm "${PHP_INI_DIR}/conf.d/docker-php-ext-pdo_mysql.ini" \
+    		"${PHP_INI_DIR}/conf.d/docker-php-ext-pdo_pgsql.ini"
 
-ENV PHP_INI_XDEBUG_REMOTE_HOST=localhost XDEBUG_VERSION=3
+ENV PHP_INI_XDEBUG_REMOTE_HOST=host.docker.internal XDEBUG_VERSION=3
 COPY xdebug/xdebug${XDEBUG_VERSION}.ini ${PHP_INI_DIR}/conf.d/xdebug.ini

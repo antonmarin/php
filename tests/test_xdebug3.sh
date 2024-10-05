@@ -15,8 +15,8 @@ PHP_INI_XDEBUG_REMOTE_HOST=${EXPECTED_XDEBUG_REMOTE_HOST} php -dzend_extension=x
   -i | grep -q "xdebug.client_host => ${EXPECTED_XDEBUG_REMOTE_HOST}"
 echo ' -> OK'
 
-echo -n 'Xdebug client host should be localhost by default'
-php -dzend_extension=xdebug.so -i | grep -q "xdebug.client_host => localhost"
+echo -n 'Xdebug client host should be host.docker.internal by default'
+php -dzend_extension=xdebug.so -i | grep -q "xdebug.client_host => host.docker.internal"
 echo ' -> OK'
 
 echo -n 'Xdebug idekey should be PHPSTORM'

@@ -9,8 +9,8 @@ echo -n 'Xdebug should be remote enabled'
 php -dzend_extension=xdebug.so -i | grep -q "xdebug.remote_enable => On"
 echo ' -> OK'
 
-echo -n 'Xdebug remote host should be localhost by default'
-php -dzend_extension=xdebug.so -i | grep -q "xdebug.remote_host => localhost"
+echo -n 'Xdebug remote host should be host.docker.internal by default'
+php -dzend_extension=xdebug.so -i | grep -q "xdebug.remote_host => host.docker.internal"
 echo ' -> OK'
 
 echo -n 'Xdebug remote host should equal to ${PHP_INI_XDEBUG_REMOTE_HOST} if set'

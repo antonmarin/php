@@ -3,6 +3,8 @@
 files="/tmp/tests/test_vars.sh
 /tmp/tests/test_php.sh
 /tmp/tests/test_composer.sh
+/tmp/tests/test_mysql.sh
+/tmp/tests/test_pgsql.sh
 /tmp/tests/test_xdebug${XDEBUG_VERSION}.sh"
 
 # shellcheck disable=SC1091
